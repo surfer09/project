@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/login.css') }}" />
+{% endblock %}
+
+{% block body_id %}loginBody{% endblock %}
+
+{% block body %}
+	<div class="row all0">
+		<div class="container full-width all0">
+			<div class="col-md-4">&nbsp;</div>
+			<div class="col-md-4">
+				<div class="login-logo"><span>Enriched</span>Academy</div>
+				<div class="clearfix"></div>
+				<div id="div_login_box" class="login-box">
+					<div class="login-box-title">{{ 'label.login_box_title'|trans }}</div>
+					<div id="formErrors"></div>
+					<form id="loginForm" method="POST">
+						<div class="form-group">
+							<input type="email" name="email" class="input-login" placeholder="{{ 'placeholder.email'|trans }}" required />
+							<span class="input-icons"><i class="fa fa-envelope"></i></span>
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" class="input-login" placeholder="{{ 'placeholder.password'|trans }}" required />
+							<span class="input-icons"><i class="fa fa-lock"></i></span>
+						</div>
+						<div class="form-group">
+							<div class="pull-left">
+								<input type="checkbox" class="input-check-login" name="remember_me" /><span class="remember-me">{{ 'label.remember_me'|trans }}</span>
+							</div>
+							<div class="pull-right">
+								<button class="btn-login" onclick="login(event);">{{ 'label.login_btn'|trans }}</button>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="form-group">
+							<a href="#" class="a-forgot-password" onclick="recoverPassword(event);">{{ 'label.forgot_password'|trans }}</a>
+						</div>
+						<div class="clearfix"></div>
+					</form>
+				</div>
+				<div id="div_recover_box" class="login-box hide-class">
+					<div class="login-box-title">{{ 'label.forgot_password'|trans }}</div>
+					<form id="" method="POST">
+						<div class="form-group">
+							<input type="email" name="email" class="input-login" placeholder="{{ 'placeholder.email'|trans }}" required />
+							<span class="input-icons"><i class="fa fa-envelope"></i></span>
+						</div>
+						<div class="form-group">
+							<div class="pull-right">
+								<button class="btn-login">{{ 'label.recover_btn'|trans }}</button>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="form-group">
+							<a href="#" class="a-forgot-password" onclick="backLogin(event);">{{ 'label.back_login'|trans }}</a>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-4">&nbsp;</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript">
+		var lang_field_required = "{{ 'label.field_required'|trans }}";
+		var lang_email_incorrect = "{{ 'label.email_incorrect'|trans }}";
+	</script>
+	<script type="text/javascript" src="{{ asset('assets/js/jquery.validate.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/additional-methods.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/functions.js') }}"></script>
+{% endblock %}

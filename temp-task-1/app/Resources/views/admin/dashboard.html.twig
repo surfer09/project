@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body_id %}all_body{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+	<div class="row all0">
+		<div class="container full-width all0">
+			{% include 'admin/header.html.twig' %}
+			<div class="clearfix"></div>
+			<div class="col-md-12 all0">
+				<div class="col-md-2 all0">
+					{% include 'admin/sidebar.html.twig' %}
+				</div>
+				<div class="col-md-10">
+					<div class="pull-left">
+						<div class="page-title">Page Title<span class="page-subtitle">Subtitle</span></div>
+					</div>
+					<div class="pull-right">
+						<ul class="ul-routing all0">
+							<li><a href=""><i class="fa fa-tachometer"></i>{{ 'label.home'|trans }}</a></li>
+							<li class="separator"><i class="fa fa-chevron-right"></i></li>
+							<li><a href="">Examples</a></li>
+							<li class="separator"><i class="fa fa-chevron-right"></i></li>
+							<li>{{ 'label.blank_page'|trans }}</li>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+					<div class="dashboard-boxes">
+						<div class="col-md-3 left0">
+							<div class="dashboard-box">
+								<div class="dashboard-border color1"><i class="fa fa-cog"></i></div>
+								<div class="dashboard-box-text">
+									<div class="title">CPU TRAFFIC</div>
+									<div class="clearfix"></div>
+									<span>90%</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-md-3 left0">
+							<div class="dashboard-box">
+								<div class="dashboard-border color2"><i class="fa fa-google-plus"></i></div>
+								<div class="dashboard-box-text">
+									<div class="title">LIKES</div>
+									<div class="clearfix"></div>
+									<span>41,410</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-md-3 left0">
+							<div class="dashboard-box">
+								<div class="dashboard-border color3"><i class="fa fa-shopping-cart"></i></div>
+								<div class="dashboard-box-text">
+									<div class="title">SALES</div>
+									<div class="clearfix"></div>
+									<span>760</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-md-3 left0">
+							<div class="dashboard-box">
+								<div class="dashboard-border color4"><i class="fa fa-users"></i></div>
+								<div class="dashboard-box-text">
+									<div class="title">NEW MEMBERS</div>
+									<div class="clearfix"></div>
+									<span>2,000</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var height = $(window).height();
+
+			$(".sidebar").css("height", height+"px");
+		});
+	</script>
+{% endblock %}

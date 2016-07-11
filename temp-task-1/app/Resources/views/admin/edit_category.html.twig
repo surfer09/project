@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit category{% endblock %}
+
+{% block body_id %}all_body{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+	<div class="row all0">
+		<div class="container full-width all0">
+			{% include 'admin/header.html.twig' %}
+			<div class="clearfix"></div>
+			<div class="col-md-12 all0">
+				<div class="col-md-2 all0">
+					{% include 'admin/sidebar.html.twig' %}
+				</div>
+				<div class="col-md-10">
+					<div class="pull-left">
+						<div class="page-title">Page Title<span class="page-subtitle">Subtitle</span></div>
+					</div>
+					<div class="pull-right">
+						<ul class="ul-routing all0">
+							<li><a href=""><i class="fa fa-tachometer"></i>{{ 'label.home'|trans }}</a></li>
+							<li class="separator"><i class="fa fa-chevron-right"></i></li>
+							<li><a href="">Examples</a></li>
+							<li class="separator"><i class="fa fa-chevron-right"></i></li>
+							<li>{{ 'label.blank_page'|trans }}</li>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+					<div class="admin-box border-info">
+						<div class="admin-box-title">
+							<div class="pull-left">
+								<div class="title">{{ 'label.edit_category'|trans }}</div>
+							</div>
+							<div class="pull-right">
+								<a href="{{ app.request.getBaseURL() }}/admin/category/"><button class="btn-admin">{{ 'label.back'|trans }}</button></a>
+								<a href="" class="a-admin-box"><i class="fa fa-minus"></i></a>
+								<a href="" class="a-admin-box"><i class="fa fa-close"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="col-md-2">&nbsp;</div>
+						<div class="col-md-8">
+							<div id="form_messages"></div>
+							<form id="editCategoryForm" method="POST">
+								<div class="form-group">
+									<label class="col-md-3 control-label"><span class="pull-right">{{ 'label.name'|trans }}</span></label>
+									<div class="col-md-9">
+										<input type="text" class="input-edited" name="category_name" required value="{{ category.categoryName }}" />
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group">
+									<label class="col-md-3 control-label"><span class="pull-right">{{ 'label.description'|trans }}</span></label>
+									<div class="col-md-9">
+										<textarea class="textarea-edited" name="description">{{ category.description }}</textarea>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group">
+									<label class="col-md-3 control-label"><span class="pull-right">{{ 'label.image'|trans }}</span></label>
+									<div class="col-md-9">
+										<div id="imagePlace" class="image-here">
+										{% if category.image|length > 0 %}
+										<img src="{{ asset("assets/upload/categories/"~category.image) }}" />
+										{% endif %}
+										</div>
+										<div class="clearfix"></div><div class="height-10"></div>
+										<div id="firstImageButtons">
+											<input type="file" name="category_pic" class="file-browse btn-select-file" onchange="showImage(event, this);" id="input_edit_category_pic" />
+											<button class="btn-admin" id="upload_file">{{ 'label.select_file'|trans }}</button>
+											{% if category.image|length > 0 %}
+											<button class="btn-admin btn-red" type="button" id="btn_delete_file" onclick="deleteCategoryImage(event, this, {{ category.id }});">{{ 'label.delete_file'|trans }}</button>
+											<a href="{{ asset('assets/upload/categories/'~category.image) }}" download><button class="btn-admin btn-orange" type="button" id="btn_download_file">{{ 'label.download_file'|trans }}</button></a>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group">
+									<div class="col-md-3">&nbsp;</div>
+									<div class="col-md-9">
+										<div class="height-10"></div>
+										<button type="button" class="btn-admin btn-green" onclick="editCategory(event, this, {{ category.id }});">{{ 'label.submit'|trans }}</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-2">&nbsp;</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('assets/js/jquery.validate.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/additional-methods.js') }}"></script>
+	<script type="text/javascript">
+		var lang_field_required = "{{ 'label.field_required'|trans }}";
+		var lang_email_incorrect = "{{ 'label.email_incorrect'|trans }}";
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			var height = $(window).height();
+
+			$(".sidebar").css("height", height+"px");
+		});
+	</script>
+	<script type="text/javascript" src="{{ asset('assets/js/functions.js') }}"></script>
+{% endblock %}

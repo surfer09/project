@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body id="{% block body_id %}{% endblock %}">
+        {% block body %}{% endblock %}
+        <script type="text/javascripts" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript">
+            var CI_ROOT = "{{ app.request.getBaseURL() }}";
+        </script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

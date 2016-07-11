@@ -1,0 +1,30 @@
+<div class="sidebar">
+	<div class="user-sidebar">
+		<img src="{{ asset('assets/images/no_image.jpg') }}" />
+		<div class="username-sidebar">
+			Alexander Pierce
+			<div class="clearfix"></div>
+			<span class="status"><i class="fa fa-circle online"></i>{{ 'label.online_status'|trans }}</span>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="search-sidebar">
+		<input type="text" class="input-search-sidebar" placeholder="{{ 'placeholder.search'|trans }}" />
+		<span class="i-search"><i class="fa fa-search"></i></span>
+	</div>
+	<div class="clearfix"></div>
+	<div class="main-navigation">
+		{{ 'label.main_navigation'|trans }}
+	</div>
+	<div class="clearfix"></div>
+	<ul class="ul-sidebar all0">
+		<li><a href="{{ app.request.getBaseURL() }}/admin"><i class="fa fa-tachometer"></i>{{ 'label.dashboard'|trans }}</a></li>
+		<li><a href="{{ app.request.getBaseURL() }}/admin/category/"><i class="fa fa-th"></i>{{ 'label.categories'|trans }}</a></li>
+		<li><a href="{{ app.request.getBaseURL() }}/admin/company/"><i class="fa fa-th"></i>{{ 'label.companies'|trans }}</a></li>
+		<li><a href="{{ app.request.getBaseURL() }}/admin/client/"><i class="fa fa-th"></i>{{ 'label.clients'|trans }}</a></li>
+		<li><a href="{{ app.request.getBaseURL() }}/admin/quiz"><i class="fa fa-th"></i>{{ 'label.quizes'|trans }}</a></li>
+		<li><a href="{{ app.request.getBaseURL() }}/admin/user/"><i class="fa fa-th"></i>{{ 'label.users'|trans }}</a></li>
+		<li><a href="{{ app.request.getBaseURL() }}/admin/video/"><i class="fa fa-th"></i>{{ 'label.videos'|trans }}</a></li>
+	</ul>
+	<div class="clearfix"></div>
+</div>
